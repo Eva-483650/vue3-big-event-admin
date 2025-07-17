@@ -49,5 +49,15 @@ export default defineConfig([
       'vue/no-setup-props-destructure': 'off', // 允许 props 解构
       'no-undef': 'error' // 未定义变量报错
     }
+  },
+  {
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ElMessage: 'readonly',
+        ElMessageBox: 'readonly',
+        ElLoading: 'readonly'
+      }
+    }
   }
 ])
