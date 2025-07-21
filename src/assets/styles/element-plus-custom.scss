@@ -1,0 +1,130 @@
+// @forward 'element-plus/theme-chalk/src/common/var.scss' with (
+//   $colors: (
+//     'primary': (
+//       'base': #b19cd9,
+//     ),
+//     'success': (
+//       'base': #a7dbd8,
+//     ),
+//     'warning': (
+//       'base': #f2c94c,
+//     ),
+//     'danger': (
+//       'base': #e76f51,
+//     ),
+//     'info': (
+//       'base': #d4bbe5,
+//     ),
+//   )
+// );
+
+
+
+// 全局 CSS 变量（你可以按需继续使用）
+:root {
+  --fresh-serene-primary: #b19cd9;
+  --fresh-serene-secondary: #d4bbe5;
+  --fresh-serene-accent: #a7dbd8;
+  --fresh-serene-active-accent: #beedeb;
+  --fresh-serene-danger: #e76f51;
+  --fresh-serene-danger-light: #f7b7a3;
+  --fresh-serene-danger-dark: #c95c42;
+
+  --fresh-serene-text: #555555;
+  --fresh-serene-dark-text: #333333;
+  --fresh-serene-light-text: #ffffff;
+
+  --fresh-serene-background: #f7f4f9;
+  --fresh-serene-header-bg: #f7f4f9;
+
+  --el-bg-color-overlay: #ffffff;
+  --el-border-radius-base: 4px;
+
+  -fresh-serene-secondary-light: #e7deee; /* 辅助色的浅色变体 */
+}
+
+.el-button.is-circle {
+  padding: 0;
+  border-radius: 50% !important;
+  background-color: #ffffff;
+  color: var(--fresh-serene-primary);
+  border: var(f --fresh-serene-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+  box-shadow: none;
+
+  &:hover {
+    color: #fff;
+    background-color: var(--fresh-serene-secondary);
+  }
+
+  &:active {
+    color: #fff;
+    background-color: var(--fresh-serene-secondary);
+    transform: scale(0.96);
+  }
+}
+
+.el-button.is-circle.el-icon {
+  font-size: 18px;
+  color: var(fresh-serene-secondary);
+}
+
+// 自定义下拉菜单
+.el-dropdown__box {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+  color: var(--fresh-serene-text);
+
+  .el-icon {
+    color: var(--fresh-serene-text);
+    margin-left: 8px;
+    transition: color 0.2s ease-in-out;
+  }
+
+  &:hover,
+  &:focus {
+    outline: none;
+    background-color: var(--fresh-serene-secondary);
+    color: var(--fresh-serene-dark-text);
+    .el-icon {
+      color: var(--fresh-serene-dark-text);
+    }
+  }
+  &:active {
+    background-color: var(--fresh-serene-primary);
+    color: var(--fresh-serene-dark-text);
+    .el-icon {
+      color: var(--fresh-serene-dark-text);
+    }
+  }
+}
+
+.el-dropdown-menu {
+  background-color: var(--el-bg-color-overlay);
+  border: 1px solid var(--fresh-serene-secondary);
+  border-radius: var(--el-border-radius-base);
+}
+
+.el-dropdown-menu__item {
+  color: var(--fresh-serene-text);
+
+  &:hover {
+    background-color: var(--fresh-serene-secondary) !important;
+    color: var(--fresh-serene-dark-text) !important;
+  }
+
+  &.is-active {
+    background-color: var(--fresh-serene-accent) !important;
+    color: var(--fresh-serene-dark-text) !important;
+  }
+}

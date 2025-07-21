@@ -1,3 +1,120 @@
+<template>
+  <el-row class="login-page">
+    <el-col :span="12" class="bg"></el-col>
+    <el-col :span="6" :offset="3" class="form">
+      <!-- 注册 -->
+      <el-form
+        :model="formModel"
+        :rules="rules"
+        ref="form"
+        size="large"
+        autocomplete="off"
+        v-if="isRegister"
+      >
+        <el-form-item>
+          <h1>注册</h1>
+        </el-form-item>
+        <el-form-item prop="username">
+          <el-input
+            @keyup.enter="register"
+            v-model="formModel.username"
+            :prefix-icon="User"
+            placeholder="请输入用户名"
+          ></el-input>
+        </el-form-item>
+        <el-form-item prop="password">
+          <el-input
+            @keyup.enter="register"
+            v-model="formModel.password"
+            :prefix-icon="Lock"
+            type="password"
+            placeholder="请输入密码"
+            show-password
+          ></el-input>
+        </el-form-item>
+        <el-form-item prop="repassword">
+          <el-input
+            @keyup.enter="register"
+            v-model="formModel.repassword"
+            :prefix-icon="Lock"
+            type="password"
+            placeholder="请输入再次密码"
+            show-password
+          ></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button
+            @click="register"
+            class="button"
+            type="primary"
+            auto-insert-space
+          >
+            注册
+          </el-button>
+        </el-form-item>
+        <el-form-item class="flex">
+          <el-link type="info" underline="never" @click="isRegister = false">
+            ← 返回
+          </el-link>
+        </el-form-item>
+      </el-form>
+
+      <!-- 登录 -->
+      <el-form
+        :model="formModel"
+        :rules="rules"
+        ref="form"
+        size="large"
+        autocomplete="off"
+        v-else
+      >
+        <el-form-item>
+          <h1>登录</h1>
+        </el-form-item>
+        <el-form-item prop="username">
+          <el-input
+            @keyup.enter="login"
+            v-model="formModel.username"
+            :prefix-icon="User"
+            placeholder="请输入用户名"
+          ></el-input>
+        </el-form-item>
+        <el-form-item prop="password">
+          <el-input
+            @keyup.enter="login"
+            v-model="formModel.password"
+            name="password"
+            :prefix-icon="Lock"
+            type="password"
+            placeholder="请输入密码"
+            show-password
+          ></el-input>
+        </el-form-item>
+        <el-form-item class="flex">
+          <div class="flex">
+            <el-checkbox>记住我</el-checkbox>
+            <el-link type="primary" underline="never">忘记密码？</el-link>
+          </div>
+        </el-form-item>
+        <el-form-item>
+          <el-button
+            @click="login"
+            class="button"
+            type="primary"
+            auto-insert-space
+            >登录</el-button
+          >
+        </el-form-item>
+        <el-form-item class="flex">
+          <el-link type="info" underline="never" @click="isRegister = true">
+            注册 →
+          </el-link>
+        </el-form-item>
+      </el-form>
+    </el-col>
+  </el-row>
+</template>
+
 <script setup>
 import { userRegisterService } from '@/api/user.js'
 import { userLoginService } from '@/api/user.js'
@@ -88,124 +205,10 @@ const login = async () => {
     router.push('/') // 跳转到首页
   } catch (err) {
     console.log('登录失败', err)
-    ElMessage.error(err?.message || err?.response?.data?.message || '登录失败')
+    //ElMessage.error(err?.message || err?.response?.data?.message || '登录失败')
   }
 }
 </script>
-
-<template>
-  <el-row class="login-page">
-    <el-col :span="12" class="bg"></el-col>
-    <el-col :span="6" :offset="3" class="form">
-      <!-- 注册 -->
-      <el-form
-        :model="formModel"
-        :rules="rules"
-        ref="form"
-        size="large"
-        autocomplete="off"
-        v-if="isRegister"
-      >
-        <el-form-item>
-          <h1>注册</h1>
-        </el-form-item>
-        <el-form-item prop="username">
-          <el-input
-            @keyup.enter="register"
-            v-model="formModel.username"
-            :prefix-icon="User"
-            placeholder="请输入用户名"
-          ></el-input>
-        </el-form-item>
-        <el-form-item prop="password">
-          <el-input
-            @keyup.enter="register"
-            v-model="formModel.password"
-            :prefix-icon="Lock"
-            type="password"
-            placeholder="请输入密码"
-          ></el-input>
-        </el-form-item>
-        <el-form-item prop="repassword">
-          <el-input
-            @keyup.enter="register"
-            v-model="formModel.repassword"
-            :prefix-icon="Lock"
-            type="password"
-            placeholder="请输入再次密码"
-          ></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-button
-            @click="register"
-            class="button"
-            type="primary"
-            auto-insert-space
-          >
-            注册
-          </el-button>
-        </el-form-item>
-        <el-form-item class="flex">
-          <el-link type="info" underline="never" @click="isRegister = false">
-            ← 返回
-          </el-link>
-        </el-form-item>
-      </el-form>
-
-      <!-- 登录 -->
-      <el-form
-        :model="formModel"
-        :rules="rules"
-        ref="form"
-        size="large"
-        autocomplete="off"
-        v-else
-      >
-        <el-form-item>
-          <h1>登录</h1>
-        </el-form-item>
-        <el-form-item prop="username">
-          <el-input
-            @keyup.enter="login"
-            v-model="formModel.username"
-            :prefix-icon="User"
-            placeholder="请输入用户名"
-          ></el-input>
-        </el-form-item>
-        <el-form-item prop="password">
-          <el-input
-            @keyup.enter="login"
-            v-model="formModel.password"
-            name="password"
-            :prefix-icon="Lock"
-            type="password"
-            placeholder="请输入密码"
-          ></el-input>
-        </el-form-item>
-        <el-form-item class="flex">
-          <div class="flex">
-            <el-checkbox>记住我</el-checkbox>
-            <el-link type="primary" underline="never">忘记密码？</el-link>
-          </div>
-        </el-form-item>
-        <el-form-item>
-          <el-button
-            @click="login"
-            class="button"
-            type="primary"
-            auto-insert-space
-            >登录</el-button
-          >
-        </el-form-item>
-        <el-form-item class="flex">
-          <el-link type="info" underline="never" @click="isRegister = true">
-            注册 →
-          </el-link>
-        </el-form-item>
-      </el-form>
-    </el-col>
-  </el-row>
-</template>
 
 <style lang="scss" scoped>
 .login-page {

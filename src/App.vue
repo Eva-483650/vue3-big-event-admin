@@ -12,6 +12,11 @@
 //   router.push('/list')
 //   console.log('goList', route)
 // }
+import { onMounted } from 'vue'
+import ThemeColor from '@/assets/styles/themeColor'
+onMounted(() => {
+  ThemeColor()
+})
 </script>
 
 <template>

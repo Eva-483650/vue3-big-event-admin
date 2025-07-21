@@ -6,7 +6,6 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
@@ -15,13 +14,13 @@ export default defineConfig({
       imports: [
         'vue',
         {
-          'element-plus': ['ElMessage', 'ElMessageBox', 'ElLoading']
+          'element-plus': ['ElLoading']
         }
       ],
       resolvers: [ElementPlusResolver()]
     }),
     Components({
-      resolvers: [ElementPlusResolver()]
+      resolvers: [ElementPlusResolver({ importStyle: 'sass' })]
     })
   ],
   resolve: {
@@ -29,4 +28,11 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   }
+  // css: {
+  //   preprocessorOptions: {
+  //     scss: {
+  //       additionalData: `@use "@/assets/styles/element-plus-custom.scss" as *;`,
+  //     },
+  //   },
+  // },
 })
