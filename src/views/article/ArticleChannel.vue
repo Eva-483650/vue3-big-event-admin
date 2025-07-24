@@ -17,7 +17,7 @@
       >
         <el-table-column
           type="index"
-          width="1"
+          width="40"
           header-align="center"
           align="center"
         />
