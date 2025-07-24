@@ -1,7 +1,7 @@
 <template>
   <page-container title="Ariticle Channels">
     <template #extra>
-      <el-button @click="onAddChannel" plain>Add Channel</el-button>
+      <el-button @click="onAddChannel" class="myButton">Add Channel</el-button>
     </template>
     <template #contentText>
       <el-table
@@ -15,16 +15,31 @@
         style="width: 100%"
         table-layout="fixed"
       >
-        <el-table-column type="index" min-width="40" />
-        <el-table-column prop="cate_name" label="Name" min-width="200" />
+        <el-table-column
+          type="index"
+          width="1"
+          header-align="center"
+          align="center"
+        />
+        <el-table-column
+          prop="cate_name"
+          label="Name"
+          header-align="center"
+          align="center"
+        />
         <el-table-column
           prop="cate_alias"
           label="Description"
-          min-width="400"
+          header-align="center"
+          align="center"
         />
-        <el-table-column label="Operation" min-width="120">
+        <el-table-column
+          label="Operation"
+          min-width="120"
+          header-align="center"
+        >
           <template #default="{ row, $index }">
-            <div style="display: flex; gap: 2px; justify-content: center">
+            <div style="display: flex; justify-content: center">
               <el-button
                 @click="onEditChannel(row, $index)"
                 :icon="Edit"
@@ -93,7 +108,7 @@ const onDelChannel = async (row) => {
     }
   )
   await artDelChannelService(row.id)
-  ElMessage.success('删除成功')
+  ElMessage.success('delete success')
   getChannelList()
 }
 
@@ -106,3 +121,84 @@ const onSuccess = () => {
   getChannelList()
 }
 </script>
+
+<style lang="scss" scoped>
+.myButton {
+  /* 基础颜色 */
+  --el-button-bg-color: var(--fresh-serene-primary); /* 按钮背景色 */
+  --el-button-text-color: #ffffff; /* 按钮文字颜色 */
+  --el-button-border-color: var(--fresh-serene-primary); /* 按钮边框色 */
+
+  /* 悬停时的颜色 (hover) */
+  --el-button-hover-bg-color: var(
+    --fresh-serene-secondary
+  ); /* 悬停背景色改为辅助色 */
+  --el-button-hover-text-color: var(--fresh-serene-light-text);
+  --el-button-hover-border-color: var(--fresh-serene-secondary);
+
+  /* 激活时的颜色 (active/pressed) */
+  --el-button-active-bg-color: var(
+    --fresh-serene-accent
+  ); /* 激活背景色改为强调色 */
+  --el-button-active-text-color: var(--fresh-serene-light-text);
+  --el-button-active-border-color: var(--fresh-serene-accent);
+
+  /* 禁用时的颜色 */
+  --el-button-disabled-bg-color: var(
+    --fresh-serene-secondary-light,
+    #e7deee
+  ); /* 禁用背景色用辅助色的浅色变体 */
+  --el-button-disabled-text-color: rgba(
+    255,
+    255,
+    255,
+    0.7
+  ); /* 禁用文字颜色稍暗 */
+  --el-button-disabled-border-color: var(
+    --fresh-serene-secondary-light,
+    #e7deee
+  );
+
+  /* === Hover 动画效果 === */
+  /* 过渡效果：平滑地过渡背景色和边框色 */
+  transition:
+    var(--el-transition-duration) var(--el-transition-function-ease-in-out)
+      background-color,
+    var(--el-transition-duration) var(--el-transition-function-ease-in-out)
+      border-color;
+
+  /* 确保按钮的默认状态 */
+  background-color: var(--el-button-bg-color);
+  color: var(--el-button-text-color);
+  border-color: var(--el-button-border-color);
+
+  /* 悬停状态 */
+  &:hover {
+    background-color: var(--el-button-hover-bg-color);
+    border-color: var(--el-button-hover-border-color);
+    color: var(--el-button-hover-text-color); /* 确保文字颜色也保持 */
+    /* 可以添加一个轻微的缩放效果，增加交互感 */
+    transform: translateY(-2px); /* 向上轻微移动 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* 添加阴影 */
+  }
+
+  /* 激活/按下状态 */
+  &:active {
+    background-color: var(--el-button-active-bg-color);
+    border-color: var(--el-button-active-border-color);
+    color: var(--el-button-active-text-color);
+    transform: translateY(0); /* 恢复位置 */
+    box-shadow: none; /* 移除阴影 */
+  }
+
+  /* 禁用状态 */
+  &.is-disabled {
+    background-color: var(--el-button-disabled-bg-color);
+    border-color: var(--el-button-disabled-border-color);
+    color: var(--el-button-disabled-text-color);
+    cursor: not-allowed; /* 禁用时鼠标样式 */
+    transform: none; /* 移除任何动画效果 */
+    box-shadow: none;
+  }
+}
+</style>

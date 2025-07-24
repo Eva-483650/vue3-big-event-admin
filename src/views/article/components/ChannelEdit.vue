@@ -12,7 +12,7 @@
         label="Name"
         prop="cate_name"
         :label-width="formLabelWidth"
-        style="padding-right: 30px"
+        style="padding-right: 24px"
       >
         <el-input
           v-model="formModel.cate_name"
@@ -24,7 +24,7 @@
         label="Description"
         prop="cate_alias"
         :label-width="formLabelWidth"
-        style="padding-right: 30px"
+        style="padding-right: 24px"
       >
         <!-- autocomplete off 禁用浏览器自动填充 -->
         <el-input
@@ -83,7 +83,7 @@ const rules = reactive({
       message: 'Please input Channel description',
       trigger: 'blur'
     },
-    { min: 5, max: 20, message: 'Length should be 5 to 20', trigger: 'blur' }
+    { min: 3, max: 30, message: 'Length should be 3 to 30', trigger: 'blur' }
   ]
 })
 
