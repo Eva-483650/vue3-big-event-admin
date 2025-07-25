@@ -136,13 +136,6 @@ const onSuccess = () => {
   --el-button-hover-text-color: var(--fresh-serene-light-text);
   --el-button-hover-border-color: var(--fresh-serene-secondary);
 
-  /* 激活时的颜色 (active/pressed) */
-  --el-button-active-bg-color: var(
-    --fresh-serene-accent
-  ); /* 激活背景色改为强调色 */
-  --el-button-active-text-color: var(--fresh-serene-light-text);
-  --el-button-active-border-color: var(--fresh-serene-accent);
-
   /* 禁用时的颜色 */
   --el-button-disabled-bg-color: var(
     --fresh-serene-secondary-light,
@@ -181,16 +174,6 @@ const onSuccess = () => {
     transform: translateY(-2px); /* 向上轻微移动 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* 添加阴影 */
   }
-
-  /* 激活/按下状态 */
-  &:active {
-    background-color: var(--el-button-active-bg-color);
-    border-color: var(--el-button-active-border-color);
-    color: var(--el-button-active-text-color);
-    transform: translateY(0); /* 恢复位置 */
-    box-shadow: none; /* 移除阴影 */
-  }
-
   /* 禁用状态 */
   &.is-disabled {
     background-color: var(--el-button-disabled-bg-color);

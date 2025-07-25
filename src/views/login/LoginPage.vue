@@ -122,17 +122,6 @@ import { User, Lock } from '@element-plus/icons-vue'
 import { ref, watch, reactive } from 'vue' // 确保 reactive 导入
 import { useUserStore } from '@/stores'
 import { useRouter } from 'vue-router'
-import {
-  ElMessage,
-  ElForm,
-  ElFormItem,
-  ElInput,
-  ElButton,
-  ElLink,
-  ElCheckbox,
-  ElRow,
-  ElCol
-} from 'element-plus' // 导入 Element Plus 组件
 
 const isRegister = ref(false) // 默认显示登录页面
 const form = ref(null)
@@ -293,13 +282,6 @@ const login = async () => {
   ); /* 悬停背景色改为辅助色 */
   --el-button-hover-text-color: var(--fresh-serene-light-text);
   --el-button-hover-border-color: var(--fresh-serene-secondary);
-
-  /* 激活时的颜色 (active/pressed) */
-  --el-button-active-bg-color: var(
-    --fresh-serene-accent
-  ); /* 激活背景色改为强调色 */
-  --el-button-active-text-color: var(--fresh-serene-light-text);
-  --el-button-active-border-color: var(--fresh-serene-accent);
 
   /* 禁用时的颜色 */
   --el-button-disabled-bg-color: var(

@@ -36,8 +36,8 @@
     </el-form>
     <template #footer>
       <div class="dialog-footer">
-        <el-button @click="dialogVisible = false" plain>Cancel</el-button>
-        <el-button @click="onSubmit" plain> Confirm </el-button>
+        <el-button @click="dialogVisible = false">Cancel</el-button>
+        <el-button @click="onSubmit" type="primary"> Confirm </el-button>
       </div>
     </template>
   </el-dialog>

@@ -133,13 +133,6 @@ const onUpdateAvatar = async () => {
   --el-button-hover-text-color: var(--fresh-serene-light-text);
   --el-button-hover-border-color: var(--fresh-serene-secondary);
 
-  /* 激活时的颜色 (active/pressed) */
-  --el-button-active-bg-color: var(
-    --fresh-serene-accent
-  ); /* 激活背景色改为强调色 */
-  --el-button-active-text-color: var(--fresh-serene-light-text);
-  --el-button-active-border-color: var(--fresh-serene-accent);
-
   /* 禁用时的颜色 */
   --el-button-disabled-bg-color: var(
     --fresh-serene-secondary-light,

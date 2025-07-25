@@ -1,9 +1,7 @@
 <template>
   <page-container title="Article Management">
     <template #extra>
-      <el-button plain @click="onAddArticle" class="myButton"
-        >Add Article</el-button
-      >
+      <el-button @click="onAddArticle" class="myButton">Add Article</el-button>
     </template>
     <template #contentText>
       <!-- 表单区域 -->
@@ -51,7 +49,9 @@
         >
           <!-- 链接 -->
           <template #default="{ row }">
-            <el-link>{{ row.title }}</el-link>
+            <span @click="onEditArticle(row)">
+              <el-link type="primary">{{ row.title }}</el-link>
+            </span>
           </template>
         </el-table-column>
         <el-table-column
@@ -238,13 +238,6 @@ const handleCurrentChange = (page) => {
   --el-button-hover-text-color: var(--fresh-serene-light-text);
   --el-button-hover-border-color: var(--fresh-serene-secondary);
 
-  /* 激活时的颜色 (active/pressed) */
-  --el-button-active-bg-color: var(
-    --fresh-serene-accent
-  ); /* 激活背景色改为强调色 */
-  --el-button-active-text-color: var(--fresh-serene-light-text);
-  --el-button-active-border-color: var(--fresh-serene-accent);
-
   /* 禁用时的颜色 */
   --el-button-disabled-bg-color: var(
     --fresh-serene-secondary-light,
@@ -282,14 +275,6 @@ const handleCurrentChange = (page) => {
     /* 可以添加一个轻微的缩放效果，增加交互感 */
     transform: translateY(-2px); /* 向上轻微移动 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* 添加阴影 */
-  }
-  /* 激活/按下状态 */
-  &:active {
-    background-color: var(--el-button-active-bg-color);
-    border-color: var(--el-button-active-border-color);
-    color: var(--el-button-active-text-color);
-    transform: translateY(0); /* 恢复位置 */
-    box-shadow: none; /* 移除阴影 */
   }
   /* 禁用状态 */
   &.is-disabled {
