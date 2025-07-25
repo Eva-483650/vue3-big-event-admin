@@ -1,3 +1,4 @@
+l
 <template>
   <page-containner title="Reset Password">
     <div class="change-password-container">
@@ -216,11 +217,6 @@ const resetForm = () => {
   --el-button-hover-text-color: var(--fresh-serene-light-text, #ffffff);
   --el-button-hover-border-color: var(--fresh-serene-secondary, #8e7bc1);
 
-  /* 激活时的颜色 (active/pressed) - 使用主题 Accent 色 */
-  --el-button-active-bg-color: var(--fresh-serene-accent, #553e70);
-  --el-button-active-text-color: var(--fresh-serene-light-text, #ffffff);
-  --el-button-active-border-color: var(--fresh-serene-accent, #553e70);
-
   /* 禁用时的颜色 */
   --el-button-disabled-bg-color: var(--fresh-serene-secondary-light, #e7deee);
   --el-button-disabled-text-color: rgba(255, 255, 255, 0.7);
@@ -250,14 +246,6 @@ const resetForm = () => {
     color: var(--el-button-hover-text-color);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  }
-
-  &:active {
-    background-color: var(--el-button-active-bg-color);
-    border-color: var(--el-button-active-border-color);
-    color: var(--el-button-active-text-color);
-    transform: translateY(0);
-    box-shadow: none;
   }
 
   &.is-disabled {
